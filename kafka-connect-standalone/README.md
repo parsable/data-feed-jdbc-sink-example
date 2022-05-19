@@ -2,7 +2,7 @@
 
 An extension to the original Confluent [kafka-connect docker image](https://github.com/confluentinc/cp-docker-images/tree/3.3.x/debian/kafka-connect-base) that invokes a "standalone" worker instead.
 
-An example usage in a `docker-compose.yml` file can be like the following.
+An example usage in a `../docker-compose.yml` file can be like the following.
 Similar to the default `CONNECT_` prefix, the `STANDALONE_` prefix is used to fill a worker's standalone properties file.  
 
       kafka-connect-standalone:
