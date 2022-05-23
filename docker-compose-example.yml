@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:14.1
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_USER: test
+      POSTGRES_DB: test
+    ports:
+      - "5432:5432"
+  kafka-connect-standalone-0:
+    image: kafka-connect-standalone:latest
+    ports:
+      - 8083:8083
+    env_file:
+      - .env
+    environment:
+      - CONNECT_BOOTSTRAP_SERVERS=i-4-manufacturing-jdbc-57dccb76-15da-42-yslwepq4xl.servicebus.windows.net:9093
+      - CONNECT_CONSUMER_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://i-4-manufacturing-jdbc-57dccb76-15da-42-yslwepq4xl.servicebus.windows.net/;SharedAccessKeyName=key;SharedAccessKey=aaZUB/l16iC+DnfsJR7v8D3MLK54LFhsKYdqcw3E038=";
+      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://i-4-manufacturing-jdbc-57dccb76-15da-42-yslwepq4xl.servicebus.windows.net/;SharedAccessKeyName=key;SharedAccessKey=aaZUB/l16iC+DnfsJR7v8D3MLK54LFhsKYdqcw3E038=";
+  kafka-connect-standalone-1:
+    image: kafka-connect-standalone:latest
+    ports:
+      - 18083:8083
+    env_file:
+      - .env
+    environment:
+      - CONNECT_BOOTSTRAP_SERVERS=i-4-manufacturing-jdbc-57dccb76-15da-42-bnuqwl9oar.servicebus.windows.net:9093
+      - CONNECT_CONSUMER_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://i-4-manufacturing-jdbc-57dccb76-15da-42-bnuqwl9oar.servicebus.windows.net/;SharedAccessKeyName=key;SharedAccessKey=X70K5D2ZlcVkoP6xF62CNm0t+NCtzgtiva5erx73/5g=";
+      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://i-4-manufacturing-jdbc-57dccb76-15da-42-bnuqwl9oar.servicebus.windows.net/;SharedAccessKeyName=key;SharedAccessKey=X70K5D2ZlcVkoP6xF62CNm0t+NCtzgtiva5erx73/5g=";
+  kafka-connect-standalone-2:
+    image: kafka-connect-standalone:latest
+    env_file:
+      - .env
+    environment:
+      - CONNECT_BOOTSTRAP_SERVERS=i-4-manufacturing-jdbc-57dccb76-15da-42-xptt8boyb8.servicebus.windows.net:9093
+      - CONNECT_CONSUMER_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://i-4-manufacturing-jdbc-57dccb76-15da-42-xptt8boyb8.servicebus.windows.net/;SharedAccessKeyName=key;SharedAccessKey=LpO+izwM9Ki9ebIl1F4GE7EEGe3I/6ZVAaGK/f63kMM=";
+      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://i-4-manufacturing-jdbc-57dccb76-15da-42-xptt8boyb8.servicebus.windows.net/;SharedAccessKeyName=key;SharedAccessKey=LpO+izwM9Ki9ebIl1F4GE7EEGe3I/6ZVAaGK/f63kMM=";
+    ports:
+      - 28083:8083
