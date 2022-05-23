@@ -15,9 +15,9 @@ services:
     env_file:
       - .env
     environment:
-      - CONNECT_BOOTSTRAP_SERVERS=analyticsdata-jdbc-3fb81a8b-39d0-4a09-a-qgzqg5x0at.servicebus.windows.net:9093
-      - CONNECT_CONSUMER_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://analyticsdata-jdbc-3fb81a8b-39d0-4a09-a-qgzqg5x0at.servicebus.windows.net/;SharedAccessKeyName=jan26;SharedAccessKey=";
-      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://analyticsdata-jdbc-3fb81a8b-39d0-4a09-a-qgzqg5x0at.servicebus.windows.net/;SharedAccessKeyName=jan26;SharedAccessKey=";
+      - CONNECT_BOOTSTRAP_SERVERS= #TODO insert the address of the first Kafka Cluster that you received from customer support
+      - CONNECT_CONSUMER_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="<use either connectionStringPrimaryKey or connectionStringSecondaryKey of the first Kafka Cluster as a password>" #TODO fill in the password
+      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="<use either connectionStringPrimaryKey or connectionStringSecondaryKey of the first Kafka Cluster as a password>"; #TODO fill in the password
   kafka-connect-standalone-1:
     image: kafka-connect-standalone:latest
     ports:
@@ -25,16 +25,16 @@ services:
     env_file:
       - .env
     environment:
-      - CONNECT_BOOTSTRAP_SERVERS=analyticsdata-jdbc-3fb81a8b-39d0-4a09-a-yydfqytd2n.servicebus.windows.net:9093
-      - CONNECT_CONSUMER_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://analyticsdata-jdbc-3fb81a8b-39d0-4a09-a-yydfqytd2n.servicebus.windows.net/;SharedAccessKeyName=jan26;SharedAccessKey=";
-      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://analyticsdata-jdbc-3fb81a8b-39d0-4a09-a-yydfqytd2n.servicebus.windows.net/;SharedAccessKeyName=jan26;SharedAccessKey=";
+      - CONNECT_BOOTSTRAP_SERVERS= #TODO insert the address of the second Kafka Cluster that you received from customer support
+      - CONNECT_CONSUMER_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="<use either connectionStringPrimaryKey or connectionStringSecondaryKey of the second Kafka Cluster as a password>"; #TODO fill in the password
+      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="<use either connectionStringPrimaryKey or connectionStringSecondaryKey of the second Kafka Cluster as a password>"; #TODO fill in the password
   kafka-connect-standalone-2:
     image: kafka-connect-standalone:latest
     env_file:
       - .env
     environment:
-      - CONNECT_BOOTSTRAP_SERVERS=analyticsdata-jdbc-3fb81a8b-39d0-4a09-a-gu1kwzwhcr.servicebus.windows.net:9093
-      - CONNECT_CONSUMER_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://analyticsdata-jdbc-3fb81a8b-39d0-4a09-a-gu1kwzwhcr.servicebus.windows.net/;SharedAccessKeyName=jan26;SharedAccessKey=";
-      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://analyticsdata-jdbc-3fb81a8b-39d0-4a09-a-gu1kwzwhcr.servicebus.windows.net/;SharedAccessKeyName=jan26;SharedAccessKey=";
+      - CONNECT_BOOTSTRAP_SERVERS= #TODO insert the address of the third Kafka Cluster that you received from customer support
+      - CONNECT_CONSUMER_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="<use either connectionStringPrimaryKey or connectionStringSecondaryKey of the third Kafka Cluster as a password> #TODO fill in the password";
+      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="<use either connectionStringPrimaryKey or connectionStringSecondaryKey of the third Kafka Cluster as a password> #TODO fill in the password";
     ports:
       - 28083:8083
