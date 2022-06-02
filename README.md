@@ -52,13 +52,14 @@ i-4-manufacturing-jdbc-57dccb76-15da-42-xptt8boyb8.servicebus.windows.net:9093
 
 ### Steps
 1. Fill in schema registry credentials in `.env` file under `SR_CREDS` environment variable in format `username:password`
-2. Fill in cluster addresses and passwords in `docker-compose.yml`. There are instructions inside the file. You can also use `docker-compose-example.yml` for reference.  
-3. Build docker image
+2. If your team is in EU region, change `SR_URL` to https://api.eu-west-1.parsable.net/v2/data-feed-manager/schema-registry/
+3. Fill in cluster addresses and passwords in `docker-compose.yml`. There are instructions inside the file. You can also use `docker-compose-example.yml` for reference.  
+4. Build docker image
     ```
     cd kafka-connect-standalone
     docker build . -t kafka-connect-standalone
     ```
-4. Launch PostgresSQL database and Kafka Connect instances with Docker Compose
+5. Launch PostgresSQL database and Kafka Connect instances with Docker Compose
     ```
     docker compose up
     ```
