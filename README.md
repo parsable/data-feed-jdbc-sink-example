@@ -51,13 +51,14 @@ i-4-manufacturing-jdbc-57dccb76-15da-42-xptt8boyb8.servicebus.windows.net:9093
 2. [Docker Compose](https://docs.docker.com/compose/install/)
 
 ### Steps
-1. Fill in cluster addresses and passwords in `docker-compose.yml`. There are instructions inside the file. You can also use `docker-compose-example.yml` for reference.  
-2. Build docker image
-```
-cd kafka-connect-standalone
-docker build . -t kafka-connect-standalone
-```
-3. Launch PostgresSQL database and Kafka Connect instances with Docker Compose
-```
-docker compose up
-```
+1. Fill in schema registry credentials in `.env` file under `SR_CREDS` environment variable in format `username:password`
+2. Fill in cluster addresses and passwords in `docker-compose.yml`. There are instructions inside the file. You can also use `docker-compose-example.yml` for reference.  
+3. Build docker image
+    ```
+    cd kafka-connect-standalone
+    docker build . -t kafka-connect-standalone
+    ```
+4. Launch PostgresSQL database and Kafka Connect instances with Docker Compose
+    ```
+    docker compose up
+    ```

@@ -15,9 +15,9 @@ services:
     env_file:
       - .env
     environment:
-      - CONNECT_BOOTSTRAP_SERVERS= #TODO insert the address of the first Kafka Cluster that you received from customer support
-      - CONNECT_CONSUMER_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="<use either connectionStringPrimaryKey or connectionStringSecondaryKey of the first Kafka Cluster as a password>" #TODO fill in the password
-      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="<use either connectionStringPrimaryKey or connectionStringSecondaryKey of the first Kafka Cluster as a password>"; #TODO fill in the password
+      - CONNECT_BOOTSTRAP_SERVERS=internal-cluster-name.servicebus.windows.net:9093 #TODO insert the address of the first Kafka Cluster that you received from customer support
+      - CONNECT_CONSUMER_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://internal-cluster-name.servicebus.windows.net/;SharedAccessKeyName=name-sas-creds;SharedAccessKey=Z+cPY...fN2U="; #TODO fill in the password
+      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://internal-cluster-name.servicebus.windows.net/;SharedAccessKeyName=name-sas-creds;SharedAccessKey=Z+cPYt....fN2U="; #TODO fill in the password
   kafka-connect-standalone-1:
     image: kafka-connect-standalone:latest
     ports:
@@ -25,16 +25,16 @@ services:
     env_file:
       - .env
     environment:
-      - CONNECT_BOOTSTRAP_SERVERS= #TODO insert the address of the second Kafka Cluster that you received from customer support
-      - CONNECT_CONSUMER_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="<use either connectionStringPrimaryKey or connectionStringSecondaryKey of the second Kafka Cluster as a password>"; #TODO fill in the password
-      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="<use either connectionStringPrimaryKey or connectionStringSecondaryKey of the second Kafka Cluster as a password>"; #TODO fill in the password
+      - CONNECT_BOOTSTRAP_SERVERS=internal-cluster-name.servicebus.windows.net:9093 #TODO insert the address of the second Kafka Cluster that you received from customer support
+      - CONNECT_CONSUMER_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://internal-cluster-name.servicebus.windows.net/;SharedAccessKeyName=name-sas-creds;SharedAccessKey=xY....Qw="; #TODO fill in the password
+      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://internal-cluster-name.servicebus.windows.net/;SharedAccessKeyName=name-sas-creds;SharedAccessKey=xY...aQw="; #TODO fill in the password
   kafka-connect-standalone-2:
     image: kafka-connect-standalone:latest
     env_file:
       - .env
     environment:
-      - CONNECT_BOOTSTRAP_SERVERS= #TODO insert the address of the third Kafka Cluster that you received from customer support
-      - CONNECT_CONSUMER_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="<use either connectionStringPrimaryKey or connectionStringSecondaryKey of the third Kafka Cluster as a password> #TODO fill in the password";
-      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="<use either connectionStringPrimaryKey or connectionStringSecondaryKey of the third Kafka Cluster as a password> #TODO fill in the password";
+      - CONNECT_BOOTSTRAP_SERVERS=internal-cluster-name.servicebus.windows.net:9093 #TODO insert the address of the third Kafka Cluster that you received from customer support
+      - CONNECT_CONSUMER_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://internal-cluster-name.servicebus.windows.net/;SharedAccessKeyName=name-sas-creds;SharedAccessKey=SP5....Co="; #TODO fill in the password";
+      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="$$ConnectionString" password="Endpoint=sb://internal-cluster-name.servicebus.windows.net/;SharedAccessKeyName=name-sas-creds;SharedAccessKey=SP5....Co="; #TODO fill in the password";
     ports:
       - 28083:8083
